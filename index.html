@@ -3,9 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo List - Sukma</title>
+    
+    <!-- CSS External file -->
+    <link rel="stylesheet" href="CSS/style.css">
+    
+    <!-- Tailwind CSS Installation -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
     
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="header-title">MY TO-DO</h1>
+        
+        <!-- Clipboard Icon -->
+        <img src="ikon.png" class="header-icon" alt="Clipboard">
+        
+        <p class="header-subtitle">Manage your daily task!</p>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-container">
+        <div class="todo-card">
+            
+            <!-- Input Section -->
+            <section class="todo-app">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label class="input-label">Task</label>
+                        <input type="text" id="todo-input" class="input-field" placeholder="Write down your task here...">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Due Date</label>
+                        <input type="date" id="todo-date" class="input-field" placeholder="dd/mm/yyyy">
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="add-btn" onclick="addTask()">+</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions Button Section -->
+            <section class="actions-bar">
+                <button class="filter-btn" id="filter-btn" onclick="toggleFilterMenu()">
+                    <svg class="filter-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 6h18M7 12h10M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Filter
+                </button>
+                
+                <!-- Filter Dropdown Menu -->
+                <div class="filter-menu" id="filter-menu">
+                    <button onclick="filterTasks('all')">All Tasks</button>
+                    <button onclick="filterTasks('today')">Today</button>
+                    <button onclick="filterTasks('week')">This Week</button>
+                    <button onclick="filterTasks('month')">This Month</button>
+                    <button onclick="filterTasks('completed')">Completed</button>
+                    <button onclick="filterTasks('pending')">Pending</button>
+                </div>
+                
+                <button class="delete-all-btn" onclick="deleteAllTasks()">Delete All</button>
+            </section>
+
+            <!-- List Task Section -->
+            <section class="task-section">
+                <div class="task-list-container" id="task-list">
+                    <div class="empty-state" id="empty-state">No tasks found</div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p class="footer-text">&copy; 2025 Todo List App by Sukma</p>
+    </footer>
+    
+    <!-- Edit Modal -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Edit Task</h2>
+            <div class="modal-body">
+                <label class="input-label">Task</label>
+                <input type="text" id="edit-input" class="input-field modal-input">
+                
+                <label class="input-label">Due Date</label>
+                <input type="date" id="edit-date" class="input-field modal-input">
+            </div>
+            <div class="modal-actions">
+                <button class="modal-cancel-btn" onclick="closeEditModal()">Cancel</button>
+                <button class="modal-save-btn" onclick="saveEdit()">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript External file -->
+    <script src="js/script.js"></script>
 </body>
 </html>
